@@ -26,15 +26,25 @@ We first collected the names and locations of the most populous 5000 cities in t
 Our starting feature set is as follows:
 
 CITY = city
+
 STATE = state
+
 PA = political affiliation
+
 POP = population
+
 UNDER_5 = % of people under age 5
+
 UNDER_18 = % of people under age 18
+
 65_OR_OVER = % of people 65 and older
+
 FEMALE = % female
+
 WHITE = % white only
+
 BLACK = % black only
+
 AMERICAN_INDIAN = % american indian or alaska native only
 ASIAN = % asian only
 PACIFIC_ISLANDER = % native hawaiian and other pacific islander only
@@ -96,7 +106,7 @@ The first thing we want to check for is class imbalance.
 
 We can clearly see that there is no class imbalance, we in fact have a 49:51 split! Next lets look at our contious variables:
 
-<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/continuous_charts_log.png">
+<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/continuous_charts_logs.png">
 
 We can clearly see that they're less skewed than before the transformation. Our takeaways from these are:
 
