@@ -181,3 +181,15 @@ The first two we want to make are:
 
 MAJ_FEMALE = majority female (0 = less than 50% of population is female, 1 = more than 50% of population is female)
 MAJ_WHITE = majority white (0 = less than 50% of population is white, 1 = more than 50% of population is white)
+
+<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/maj_female.png">
+
+<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/maj_white.png">
+
+From our EDA, we know that having a majority of white people definitely affects our target variable. We'd like to make a feature which notes whether a city has a high percentage of white people and less than 5% of other minorities.
+
+<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/super_white.png">
+
+Our next feature will be HOUSE_RATIO, which will check if median house value over per person income affects our target.
+
+<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/house_price_inc.png">
