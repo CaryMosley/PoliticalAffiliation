@@ -193,3 +193,5 @@ From our EDA, we know that having a majority of white people definitely affects 
 Our next feature will be HOUSE_RATIO, which will check if median house value over per person income affects our target.
 
 <img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/house_price_inc.png">
+
+Later on we'll perform some hypothesis testing to see if there are statistically significant differences in our new features.
