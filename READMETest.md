@@ -46,41 +46,77 @@ WHITE = % white only
 BLACK = % black only
 
 AMERICAN_INDIAN = % american indian or alaska native only
+
 ASIAN = % asian only
+
 PACIFIC_ISLANDER = % native hawaiian and other pacific islander only
+
 MULTI_RACE = % two+ races
+
 HISPANIC = % hispanic
+
 VETERAN = # of veterans
+
 FOREIGN = % foreign born
+
 HOUSES = % of owner occupied houses
+
 HOUSE_VAL = median value of owner occupied houses
+
 RENT = median gross rent
+
 HOUSEHOLDS = households
+
 PPH = people per household
+
 YEAR_IN_HOUSE = % of people living in same house for one year or more
+
 OTHER_HOME_LANG = % of people, 5+ years old, who speak a language other than english at home
+
 COMPUTER = % of households with computer
+
 INTERNET = % of households with internet
+
 HIGH_SCHOOL = % of people, 25+ years old, with high school diploma or higher
+
 BACH_DEGREE = % of people, 25+ years old, with bachelors degree or higher
+
 DISABILITY_UNDER_65 = % of people with a disability under 65 years old
+
 NO_INSURANCE = % of people without health insurance, under 65 years old
+
 LABOR = % of population in civilian labor force, 16+ years old
+
 FEM_LABOR = % of female population in civilian labor force, 16+ years old
+
 HEALTHCARE = healthcare and social assistance revenue (\$1,000)
+
 SHIPMENTS = manufacturers shipments (\$1,000)
+
 TRAVEL_TIME = average travel time to work (min), 16+ years old
+
 HOUSEHOLD_INCOME = average household income
+
 INCOME = per capita income in last 12 months
+
 POVERTY = % of people in poverty
+
 FIRMS = all firms
+
 MEN_FIRM = men owned firms
+
 FEM_FIRM = female owned firms
+
 MINOR_FIRM = minority owned firms
+
 NON_MINOR_FIRM = nonminority owned firms
+
 VET_FIRM = veteran owned firms
+
 NON_VET_FIRM = non-veteran owned firms
+
 POP_AREA = population per square mile
+
 AREA = land area in square miles
 
 Our target variable is liberal vs conservative which we will turn into 1 vs 0.
@@ -111,13 +147,21 @@ We can clearly see that there is no class imbalance, we in fact have a 49:51 spl
 We can clearly see that they're less skewed than before the transformation. Our takeaways from these are:
 
 The vast majority of cities have under 50,000 people. (mean = 30,664)
+
 This (quite obviously) somewhat matches the households and population per square mile distributions.
+
 The rent and per person income distributions follow each other pretty closely.
+
 The median household income distribution also follows the distribution of the per person income.
-Most owner occupied homes are under \$200,000. (mean = 182,032)
+
+Most owner occupied homes are under \$200,000. (mean = $182,032)
+
 Most households have 2-3 people. (mean = 2.6)
+
 Most cities have under 3,000 firms. (mean = 2,666)
+
 Most cities are under 20 square miles. (mean = 15)
+
 
 Now we'll look at the rest of our features.
 
@@ -126,29 +170,53 @@ Now we'll look at the rest of our features.
 From these graphs we've made the following insights:
 
 The following features have a mean percentage of less that 10%. We believe they probably will not be huge factors in our model.
+
 People under age 5 (6%)
+
 American Indian or Alaska Native people (0%)
+
 Asian people (3%)
+
 Native Hawaiian and Other Pacific Islander people (0%)
+
 People of 2+ races (3%)
+
 Foreign born people (9%)
+
 Veterans (6%)
+
 Most cities have an almost even split of males and females. (FEMALES mean = 51%)
+
 Most cities have a majority population of white people. (mean = 76%)
+
 On the same hand, most cities have a minority population of other races. (BLACK mean = 12%, HISPANIC = 14%, others covered above)
+
 It also then makes sense a very small number of people don't speak english at home. (mean = 15%)
+
 And a majority of firms are owned by non-minorities. (mean = 73%)
+
 A little over half of houses are owner occupied. (mean = 60%)
+
 Most people have been living in the same house for a year or more. (mean = 83%)
+
 Most households have a computer and internet. (means = 87%, 78%, respectively)
+
 Most people have a high school diploma. (mean = 87%)
+
 Most people do not have a bachelor's degree. (mean = 27%)
+
 A small amount of people have a disability under the age of 65. (mean = 10%)
+
 Most people under 65 have health insurance. (NO_INSURANCE mean = 11%)
+
 Most cities have around 62% of their population in the labor force.
+
 With a little over half the labor force being female. (mean = 57%)
+
 Most cities have a low number of people in poverty. (mean = 16%)
+
 Around a third of firms are owned by females. (mean = 34%)
+
 Most firms are not owned by veterans. (mean = 82%)
 
 Now that we've made our insights, we'll bin columns with extremely small values (AMERICAN_INDIAN and PACIFIC_ISLANDER) into 1/0 categories. We will set the percent of American Indian or Alaska Natives only column to be of value 1 if it's over 1% of the population, and 0 otherwise. For the percent of Native Hawaiian and other Pacific Islander only column, we'll do a 1 if it is over 0%, and 0 otherwise.
