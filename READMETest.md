@@ -307,3 +307,6 @@ LOG_POP, LOG_HOUSEHOLDS, and LOG_FIRMS
 We cannot remove WHITE or BLACK because they were both used to make other features. As the collinearity is only a bit higher than 0.85, we'll keep both in, but note that they are highly correlated. Next, we see OTHER_HOME_LANG and LOG_HOUSEHOLD_INCOME are both correlated to two other features, so we will remove them. We can't remove LOG_POP because it is used to make other features, so we'll remove LOG_HOUSEHOLDS and LOG_FIRMS from this line. We then looked at the correlations between the rest and our output variable to decide what to drop. We end up with the final heatmap below showing the issues we mentioned above but overall it looks reasonable.
 
 <img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/heatmap.png">
+
+## Conclusions
+We were able to get a relatively accurate broad model using basic census data. With easily over a billion dollars spent on election campaigns being able to segment potential voters/consumers into voting blocs is potentially very lucrative. The finer you can segment the population the more accurate your model and the more effective you can be with your spend.
