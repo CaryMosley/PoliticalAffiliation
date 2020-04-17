@@ -272,6 +272,10 @@ Our next feature will be HOUSE_RATIO, which will check if median house value ove
 
 <img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/house_price_inc.png">
 
+Finally, we created a binary category for where the city population is above 50,000.
+
+<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/large_pop.png">
+
 Later on we'll perform some hypothesis testing to see if there are statistically significant differences in our new features.
 
 ## Feature Selection I
@@ -347,7 +351,19 @@ Using polynomial features reduced our model metrics so now we can choose our fin
 
 ## Final Model
 
-Our best model is a Gradient Boosting Classifier on X_improv features!
+Our best model is a Gradient Boosting Classifier on X_improv features! We found an accuracy of ~.84 and F1 the same. The top features from our model were population density, % of the population that is foreign born and % of the population that is white.
+
+<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/features.png">
+
+Next we looked at a confusion matrix to see how the where the wrong predictions were.
+
+<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/confusion.png">
+
+We have a very even split between False Negatives/Positives.
+
+<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/roc.png">
+
+We also built an ROC curve and calculated our AUC score, showing an AUC of 0.9 which means our model is quite accurate!
 
 ## Conclusions
 We were able to get a relatively accurate broad model using basic census data. With easily over a billion dollars spent on election campaigns, being able to segment potential voters/consumers into voting blocs is potentially very lucrative. The finer you can segment the population the more accurate your model and the more effective you can be with your spend.
