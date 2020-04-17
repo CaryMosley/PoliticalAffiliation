@@ -309,4 +309,4 @@ We cannot remove WHITE or BLACK because they were both used to make other featur
 <img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/heatmap.png">
 
 ## Conclusions
-We were able to get a relatively accurate broad model using basic census data. With easily over a billion dollars spent on election campaigns being able to segment potential voters/consumers into voting blocs is potentially very lucrative. The finer you can segment the population the more accurate your model and the more effective you can be with your spend.
+We were able to get a relatively accurate broad model using basic census data. With easily over a billion dollars spent on election campaigns, being able to segment potential voters/consumers into voting blocs is potentially very lucrative. The finer you can segment the population the more accurate your model and the more effective you can be with your spend.
