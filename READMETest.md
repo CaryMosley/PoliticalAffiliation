@@ -13,7 +13,7 @@ This workbook cleans our data and deals with outliers so we're ready for EDA
 EDA and Feature Engineering.ipynb
 This workbook contains our EDA as well as our feature engineering
 
-Feature Selection and Modeling.ipynb
+Modeling.ipynb
 This workbook contains our feature selection and modeling.
 
 ## Business Case
@@ -307,6 +307,47 @@ LOG_POP, LOG_HOUSEHOLDS, and LOG_FIRMS
 We cannot remove WHITE or BLACK because they were both used to make other features. As the collinearity is only a bit higher than 0.85, we'll keep both in, but note that they are highly correlated. Next, we see OTHER_HOME_LANG and LOG_HOUSEHOLD_INCOME are both correlated to two other features, so we will remove them. We can't remove LOG_POP because it is used to make other features, so we'll remove LOG_HOUSEHOLDS and LOG_FIRMS from this line. We then looked at the correlations between the rest and our output variable to decide what to drop. We end up with the final heatmap below showing the issues we mentioned above but overall it looks reasonable.
 
 <img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/heatmap.png">
+
+## Initial Models
+We built a function to take a variety of models, our data, and gridsearch if desired. Then we built base models for all 9 classification models we've learned. 
+
+
+<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/base_models.png">
+
+Next we used GridSearch to tune these models before evaluation.
+
+<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/grid_models.png">
+
+## Feature Selection II
+In the context of our data, there is no need to prioritize precision or recall since the cost for false negatives/positives is the same. Due to this, we focus on accuracy and F1 score as our primary evaluation metrics.
+
+From our initial models we decided that Gradient Boosting Classifier, Support Vector Classification, and Logistic Regression have the best accuracy and F1 score for both base models and models with gridsearched best parameters. We'll focus on these for our future models.
+
+We'll get coefficients for the logistic model to see if we have any features we want to drop which may improve our models. Doing this we decided to drop: 
+
+POP_LARGE
+
+AMERICAN_INDIAN
+
+PACIFIC_ISLANDER
+
+SUPER_WHITE
+
+Now lets see if this improves our models!
+
+<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/improve_models.png">
+
+Our Logistic Regression model's accuracy decreased very slightly, but every other metric improved, and every metric for our Gradient Boosting Classifier and Support Vector Classification models went up!
+
+Lastly, let's try creating some polynomial features and seeing how these affect our models.
+
+<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/poly_models.png">
+
+Using polynomial features reduced our model metrics so now we can choose our final model!
+
+## Final Model
+
+Our best model is a Gradient Boosting Classifier on X_improv features!
 
 ## Conclusions
 We were able to get a relatively accurate broad model using basic census data. With easily over a billion dollars spent on election campaigns, being able to segment potential voters/consumers into voting blocs is potentially very lucrative. The finer you can segment the population the more accurate your model and the more effective you can be with your spend.
