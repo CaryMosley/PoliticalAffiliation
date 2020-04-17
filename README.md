@@ -101,22 +101,14 @@ We can clearly see that there is no class imbalance, we in fact have a 49:51 spl
 
 We can clearly see that they're less skewed than before the transformation. Our takeaways from these are:
 
-The vast majority of cities have under 50,000 people. (mean = 30,664)
-
-This (quite obviously) somewhat matches the households and population per square mile distributions.
-
-The rent and per person income distributions follow each other pretty closely.
-
-The median household income distribution also follows the distribution of the per person income.
-
-Most owner occupied homes are under \$200,000. (mean = $182,032)
-
-Most households have 2-3 people. (mean = 2.6)
-
-Most cities have under 3,000 firms. (mean = 2,666)
-
-Most cities are under 20 square miles. (mean = 15)
-
+* The vast majority of cities have under 50,000 people. (mean = 30,664)
+  *  This (quite obviously) somewhat matches the households and population per square mile distributions.
+* The rent and per person income distributions follow each other pretty closely.
+  *  The median household income distribution also follows the distribution of the per person income.
+* Most owner occupied homes are under \$200,000. (mean = 182,032)
+* Most households have 2-3 people. (mean = 2.6)
+* Most cities have under 3,000 firms. (mean = 2,666)
+* Most cities are under 20 square miles. (mean = 15)
 
 Now we'll look at the rest of our features.
 
@@ -124,58 +116,33 @@ Now we'll look at the rest of our features.
 
 From these graphs we've made the following insights:
 
-The following features have a mean percentage of less that 10%. We believe they probably will not be huge factors in our model.
-
-People under age 5 (6%)
-
-American Indian or Alaska Native people (0%)
-
-Asian people (3%)
-
-Native Hawaiian and Other Pacific Islander people (0%)
-
-People of 2+ races (3%)
-
-Foreign born people (9%)
-
-Veterans (6%)
-
-Most cities have an almost even split of males and females. (FEMALES mean = 51%)
-
-Most cities have a majority population of white people. (mean = 76%)
-
-On the same hand, most cities have a minority population of other races. (BLACK mean = 12%, HISPANIC = 14%, others covered above)
-
-It also then makes sense a very small number of people don't speak english at home. (mean = 15%)
-
-And a majority of firms are owned by non-minorities. (mean = 73%)
-
-A little over half of houses are owner occupied. (mean = 60%)
-
-Most people have been living in the same house for a year or more. (mean = 83%)
-
-Most households have a computer and internet. (means = 87%, 78%, respectively)
-
-Most people have a high school diploma. (mean = 87%)
-
-Most people do not have a bachelor's degree. (mean = 27%)
-
-A small amount of people have a disability under the age of 65. (mean = 10%)
-
-Most people under 65 have health insurance. (NO_INSURANCE mean = 11%)
-
-Most cities have around 62% of their population in the labor force.
-
-With a little over half the labor force being female. (mean = 57%)
-
-Most cities have a low number of people in poverty. (mean = 16%)
-
-Around a third of firms are owned by females. (mean = 34%)
-
-Most firms are not owned by veterans. (mean = 82%)
+* The following features have a mean percentage of less that 10%. We believe they probably will not be huge factors in our model.
+  *  People under age 5 (6%)
+  *  American Indian or Alaska Native people (0%)
+  *  Asian people (3%)
+  *  Native Hawaiian and Other Pacific Islander people (0%)
+  *  People of 2+ races (3%)
+  *  Foreign born people (9%)
+  *  Veterans (6%)
+* Most cities have an almost even split of males and females. (`FEMALES` mean = 51%)
+* Most cities have a majority population of white people. (mean = 76%)
+  *  On the same hand, most cities have a minority population of other races. (`BLACK` mean = 12%, `HISPANIC` = 14%, others covered above)
+  *  It also then makes sense a very small number of people don't speak english at home. (mean = 15%)
+  *  And a majority of firms are owned by non-minorities. (mean = 73%)
+* A little over half of houses are owner occupied. (mean = 60%)
+* Most people have been living in the same house for a year or more. (mean = 83%)
+* Most households have a computer and internet. (means = 87%, 78%, respectively)
+* Most people have a high school diploma. (mean = 87%)
+* Most people do not have a bachelor's degree. (mean = 27%)
+* A small amount of people have a disability under the age of 65. (mean = 10%)
+* Most people under 65 have health insurance. (`NO_INSURANCE` mean = 11%)
+* Most cities have around 62% of their population in the labor force.
+  *  With a little over half the labor force being female. (mean = 57%)
+* Most cities have a low number of people in poverty. (mean = 16%)
+* Around a third of firms are owned by females. (mean = 34%)
+* Most firms are not owned by veterans. (mean = 82%)
 
 Now that we've made our insights, we'll bin columns with extremely small values (AMERICAN_INDIAN and PACIFIC_ISLANDER) into 1/0 categories. We will set the percent of American Indian or Alaska Natives only column to be of value 1 if it's over 1% of the population, and 0 otherwise. For the percent of Native Hawaiian and other Pacific Islander only column, we'll do a 1 if it is over 0%, and 0 otherwise.
-
 
 Next, let's compare some of our numeric features with our target variable.
 
@@ -212,8 +179,8 @@ Now that we've explored our data, we can use the insights we gained to create ne
 
 The first two we want to make are:
 
-MAJ_FEMALE = majority female (0 = less than 50% of population is female, 1 = more than 50% of population is female)
-MAJ_WHITE = majority white (0 = less than 50% of population is white, 1 = more than 50% of population is white)
+`MAJ_FEMALE` = majority female (0 = less than 50% of population is female, 1 = more than 50% of population is female)
+`MAJ_WHITE` = majority white (0 = less than 50% of population is white, 1 = more than 50% of population is white)
 
 <img src="Images/maj_female.png">
 
@@ -223,7 +190,7 @@ From our EDA, we know that having a majority of white people definitely affects 
 
 <img src="Images/super_white.png">
 
-Our next feature will be HOUSE_RATIO, which will check if median house value over per person income affects our target.
+Our next feature will be `HOUSE_RATIO`, which will check if median house value over per person income affects our target.
 
 <img src="Images/house_price_inc.png">
 
@@ -239,37 +206,28 @@ Later on we'll perform some hypothesis testing to see if there are statistically
 
 We'll run Z tests on these features to check the following, with the groups meaning the features we made: Null Hypothesis: Proportion of different classes among these groups is the same. Alternative Hypothesis: Proportion of different classes among these groups is different.
 
-We won't run a hypothesis test on our HOUSE_RATIO column because it is the only non-class variable.
+We won't run a hypothesis test on our `HOUSE_RATIO` column because it is the only non-class variable.
 
 If we can reject the null hypothesis, then we know that feature may be useful for our model. Otherwise, we won't use it. We will use a p-value of 0.05.
 
-Using our two-sample proportion test we arrive at a p value of .06 for MAJ_FEMALE so we do not reject the null. The p values we get for MAJ_WHITE, SUPER_WHITE, and POP_LARGE are essentially 0 so we strongly reject the null for each of these. We will move forward with these columns but decided not to use MAJ_FEMALE in our model.
+Using our two-sample proportion test we arrive at a p value of .06 for MAJ_FEMALE so we do not reject the null. The p values we get for `MAJ_WHITE`, `SUPER_WHITE`, and `POP_LARGE` are essentially 0 so we strongly reject the null for each of these. We will move forward with these columns but decided not to use MAJ_FEMALE in our model.
 
 Next we're going to check for multicollinearity. We get the following sets with very high correlations:
+* `WHITE` and `BLACK`
+* `HISPANIC` and `OTHER_HOME_LANG`
+* `FOREIGN` and `OTHER_HOME_LANG`
+* `COMPUTER` and `INTERNET`
+* `LABOR` and `FEM_LABOR`
+* `POVERTY` and `LOG_HOUSEHOLD_INCOME`
+* `LOG_HOUSEHOLD_INCOME` and `LOG_INCOME`
+* `LOG_POP`, `LOG_HOUSEHOLDS`, and `LOG_FIRMS`
 
-WHITE and BLACK
-
-HISPANIC and OTHER_HOME_LANG
-
-FOREIGN and OTHER_HOME_LANG
-
-COMPUTER and INTERNET
-
-LABOR and FEM_LABOR
-
-POVERTY and LOG_HOUSEHOLD_INCOME
-
-LOG_HOUSEHOLD_INCOME and LOG_INCOME
-
-LOG_POP, LOG_HOUSEHOLDS, and LOG_FIRMS
-
-We cannot remove WHITE or BLACK because they were both used to make other features. As the collinearity is only a bit higher than 0.85, we'll keep both in, but note that they are highly correlated. Next, we see OTHER_HOME_LANG and LOG_HOUSEHOLD_INCOME are both correlated to two other features, so we will remove them. We can't remove LOG_POP because it is used to make other features, so we'll remove LOG_HOUSEHOLDS and LOG_FIRMS from this line. We then looked at the correlations between the rest and our output variable to decide what to drop. We end up with the final heatmap below showing the issues we mentioned above but overall it looks reasonable.
+We cannot remove `WHITE` or `BLACK` because they were both used to make other features. As the collinearity is only a bit higher than 0.85, we'll keep both in, but note that they are highly correlated. Next, we see `OTHER_HOME_LANG` and `LOG_HOUSEHOLD_INCOME` are both correlated to two other features, so we will remove them. We can't remove LOG_POP because it is used to make other features, so we'll remove `LOG_HOUSEHOLDS` and `LOG_FIRMS` from this line. We then looked at the correlations between the rest and our output variable to decide what to drop. We end up with the final heatmap below showing the issues we mentioned above but overall it looks reasonable.
 
 <img src="Images/heatmap.png">
 
 ## Initial Models
 We built a function to take a variety of models, our data, and gridsearch if desired. Then we built base models for all 9 classification models we've learned. 
-
 
 <img src="Images/base_models.png">
 
@@ -283,14 +241,10 @@ In the context of our data, there is no need to prioritize precision or recall s
 From our initial models we decided that Gradient Boosting Classifier, Support Vector Classification, and Logistic Regression have the best accuracy and F1 score for both base models and models with gridsearched best parameters. We'll focus on these for our future models.
 
 We'll get coefficients for the logistic model to see if we have any features we want to drop which may improve our models. Doing this we decided to drop: 
-
-POP_LARGE
-
-AMERICAN_INDIAN
-
-PACIFIC_ISLANDER
-
-SUPER_WHITE
+* `POP_LARGE`
+* `AMERICAN_INDIAN`
+* `PACIFIC_ISLANDER`
+* `SUPER_WHITE`
 
 Now lets see if this improves our models!
 
