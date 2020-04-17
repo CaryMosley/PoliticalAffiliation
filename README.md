@@ -26,99 +26,53 @@ We first collected the names and locations of the most populous 5000 cities in t
 
 Our starting feature set is as follows:
 
-CITY = city
-
-STATE = state
-
-PA = political affiliation
-
-POP = population
-
-UNDER_5 = % of people under age 5
-
-UNDER_18 = % of people under age 18
-
-65_OR_OVER = % of people 65 and older
-
-FEMALE = % female
-
-WHITE = % white only
-
-BLACK = % black only
-
-AMERICAN_INDIAN = % american indian or alaska native only
-
-ASIAN = % asian only
-
-PACIFIC_ISLANDER = % native hawaiian and other pacific islander only
-
-MULTI_RACE = % two+ races
-
-HISPANIC = % hispanic
-
-VETERAN = # of veterans
-
-FOREIGN = % foreign born
-
-HOUSES = % of owner occupied houses
-
-HOUSE_VAL = median value of owner occupied houses
-
-RENT = median gross rent
-
-HOUSEHOLDS = households
-
-PPH = people per household
-
-YEAR_IN_HOUSE = % of people living in same house for one year or more
-
-OTHER_HOME_LANG = % of people, 5+ years old, who speak a language other than english at home
-
-COMPUTER = % of households with computer
-
-INTERNET = % of households with internet
-
-HIGH_SCHOOL = % of people, 25+ years old, with high school diploma or higher
-
-BACH_DEGREE = % of people, 25+ years old, with bachelors degree or higher
-
-DISABILITY_UNDER_65 = % of people with a disability under 65 years old
-
-NO_INSURANCE = % of people without health insurance, under 65 years old
-
-LABOR = % of population in civilian labor force, 16+ years old
-
-FEM_LABOR = % of female population in civilian labor force, 16+ years old
-
-HEALTHCARE = healthcare and social assistance revenue (\$1,000)
-
-SHIPMENTS = manufacturers shipments (\$1,000)
-
-TRAVEL_TIME = average travel time to work (min), 16+ years old
-
-HOUSEHOLD_INCOME = average household income
-
-INCOME = per capita income in last 12 months
-
-POVERTY = % of people in poverty
-
-FIRMS = all firms
-
-MEN_FIRM = men owned firms
-
-FEM_FIRM = female owned firms
-
-MINOR_FIRM = minority owned firms
-
-NON_MINOR_FIRM = nonminority owned firms
-
-VET_FIRM = veteran owned firms
-
-NON_VET_FIRM = non-veteran owned firms
-
-POP_AREA = population per square mile
-
-AREA = land area in square miles
+`CITY` = city
+`STATE` = state
+`PA` = political affiliation
+`POP` = population
+`UNDER_5` = % of people under age 5
+`UNDER_18` = % of people under age 18
+`65_OR_OVER` = % of people 65 and older
+`FEMALE` = % female
+`WHITE` = % white only
+`BLACK` = % black only
+`AMERICAN_INDIAN` = % american indian or alaska native only
+`ASIAN` = % asian only
+`PACIFIC_ISLANDER` = % native hawaiian and other pacific islander only
+`MULTI_RACE` = % two+ races
+`HISPANIC` = % hispanic
+`VETERAN` = # of veterans
+`FOREIGN` = % foreign born
+`HOUSES` = % of owner occupied houses
+`HOUSE_VAL` = median value of owner occupied houses
+`RENT` = median gross rent
+`HOUSEHOLDS` = households
+`PPH` = people per household
+`YEAR_IN_HOUSE` = % of people living in same house for one year or more
+`OTHER_HOME_LANG` = % of people, 5+ years old, who speak a language other than english at home
+`COMPUTER` = % of households with computer
+`INTERNET` = % of households with internet
+`HIGH_SCHOOL` = % of people, 25+ years old, with high school diploma or higher
+`BACH_DEGREE` = % of people, 25+ years old, with bachelors degree or higher
+`DISABILITY_UNDER_65` = % of people with a disability under 65 years old
+`NO_INSURANCE` = % of people without health insurance, under 65 years old
+`LABOR` = % of population in civilian labor force, 16+ years old
+`FEM_LABOR` = % of female population in civilian labor force, 16+ years old
+`HEALTHCARE` = healthcare and social assistance revenue (\$1,000)
+`SHIPMENTS` = manufacturers shipments (\$1,000)
+`TRAVEL_TIME` = average travel time to work (min), 16+ years old
+`HOUSEHOLD_INCOME` = average household income
+`INCOME` = per capita income in last 12 months
+`POVERTY` = % of people in poverty
+`FIRMS` = all firms
+`MEN_FIRM` = men owned firms
+`FEM_FIRM` = female owned firms
+`MINOR_FIRM` = minority owned firms
+`NON_MINOR_FIRM` = nonminority owned firms
+`VET_FIRM` = veteran owned firms
+`NON_VET_FIRM` = non-veteran owned firms
+`POP_AREA` = population per square mile
+`AREA` = land area in square miles
 
 Our target variable is liberal vs conservative which we will turn into 1 vs 0.
 
@@ -130,7 +84,7 @@ We have a number of columns that are percentages but currently in whole numbers 
 
 Now we'll look at outliers! We're first going to turn some of our count based columns into percentages where we can to help constrain the range. We turned # of veterans into % of the population as well as used total firms and firm types to make those percentages as well. We're going to use our outlier evaluation function as well as our box plots to help determine outliers. Our non-percentage data looks very skewed so we are going to log-transform our columns to help normalize this.
 
-<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/continous_charts.png">
+<img src="Images/continous_charts.png">
 
 After our transforms we still have a significant number of outliers but its much lower than before. We remove these and are left with around 3k data points. 
 
@@ -139,11 +93,11 @@ We've cleaned our data and are now going to focus on EDA.
 ## EDA
 The first thing we want to check for is class imbalance. 
 
-<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/class_plot.png">
+<img src="Images/class_plot.png">
 
 We can clearly see that there is no class imbalance, we in fact have a 49:51 split! Next lets look at our contious variables:
 
-<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/continuous_charts_logs.png">
+<img src="Images/continuous_charts_logs.png">
 
 We can clearly see that they're less skewed than before the transformation. Our takeaways from these are:
 
@@ -166,7 +120,7 @@ Most cities are under 20 square miles. (mean = 15)
 
 Now we'll look at the rest of our features.
 
-<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/percent_charts.png">
+<img src="Images/percent_charts.png">
 
 From these graphs we've made the following insights:
 
@@ -227,26 +181,26 @@ Next, let's compare some of our numeric features with our target variable.
 
 First, we can see how cities having a mostly white population will affect our target. Since WHITE is a percentage value, we'll first round these values to the nearest decimal.
 
-<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/white_stacked.png">
+<img src="Images/white_stacked.png">
 
 From this graph, we can clearly see that the "conservative" class grows as the percentage of white people goes up. At the far right we can see that when cities are around 100% white, they are almost 100% conservative.
 
 Next, let's do the same for our female population.
 
-<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/female_stacked.png">
+<img src="Images/female_stacked.png">
 
 
 From this graph we can see that the percentage of females doesn't have a very big change on our target. The vast majority of cities sit at around 50% female, and the class distribution for this looks to be split evenly.
 
 Let's look at the population, this time making bins of 10,000s.
 
-<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/pop_stacked.png">
+<img src="Images/pop_stacked.png">
 
 We can see a slight shift here in classes. As population goes up, the number of conservative cities goes down. It's important to note this could be due to the smaller sample sizes we get with larger populations.
 
 Lastly, let's see if we can find any relationship between per person income and our target.
 
-<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/income_stacked.png">
+<img src="Images/income_stacked.png">
 
 It doesn't seem like per person income affects our target by much. At the tail, we can see that the "liberal" class begins to overcome the other by some but this may be due to less samples at that income value.
 
@@ -261,21 +215,21 @@ The first two we want to make are:
 MAJ_FEMALE = majority female (0 = less than 50% of population is female, 1 = more than 50% of population is female)
 MAJ_WHITE = majority white (0 = less than 50% of population is white, 1 = more than 50% of population is white)
 
-<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/maj_female.png">
+<img src="Images/maj_female.png">
 
-<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/maj_white.png">
+<img src="Images/maj_white.png">
 
 From our EDA, we know that having a majority of white people definitely affects our target variable. We'd like to make a feature which notes whether a city has a high percentage of white people and less than 5% of other minorities.
 
-<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/super_white.png">
+<img src="Images/super_white.png">
 
 Our next feature will be HOUSE_RATIO, which will check if median house value over per person income affects our target.
 
-<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/house_price_inc.png">
+<img src="Images/house_price_inc.png">
 
 Finally, we created a binary category for where the city population is above 50,000.
 
-<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/large_pop.png">
+<img src="Images/large_pop.png">
 
 Later on we'll perform some hypothesis testing to see if there are statistically significant differences in our new features.
 
@@ -311,17 +265,17 @@ LOG_POP, LOG_HOUSEHOLDS, and LOG_FIRMS
 
 We cannot remove WHITE or BLACK because they were both used to make other features. As the collinearity is only a bit higher than 0.85, we'll keep both in, but note that they are highly correlated. Next, we see OTHER_HOME_LANG and LOG_HOUSEHOLD_INCOME are both correlated to two other features, so we will remove them. We can't remove LOG_POP because it is used to make other features, so we'll remove LOG_HOUSEHOLDS and LOG_FIRMS from this line. We then looked at the correlations between the rest and our output variable to decide what to drop. We end up with the final heatmap below showing the issues we mentioned above but overall it looks reasonable.
 
-<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/heatmap.png">
+<img src="Images/heatmap.png">
 
 ## Initial Models
 We built a function to take a variety of models, our data, and gridsearch if desired. Then we built base models for all 9 classification models we've learned. 
 
 
-<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/base_models.png">
+<img src="Images/base_models.png">
 
 Next we used GridSearch to tune these models before evaluation.
 
-<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/grid_models.png">
+<img src="Images/grid_models.png">
 
 ## Feature Selection II
 In the context of our data, there is no need to prioritize precision or recall since the cost for false negatives/positives is the same. Due to this, we focus on accuracy and F1 score as our primary evaluation metrics.
@@ -340,13 +294,13 @@ SUPER_WHITE
 
 Now lets see if this improves our models!
 
-<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/improve_models.png">
+<img src="Images/improve_models.png">
 
 Our Logistic Regression model's accuracy decreased very slightly, but every other metric improved, and every metric for our Gradient Boosting Classifier and Support Vector Classification models went up!
 
 Lastly, let's try creating some polynomial features and seeing how these affect our models.
 
-<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/poly_models.png">
+<img src="Images/poly_models.png">
 
 Using polynomial features reduced our model metrics so now we can choose our final model!
 
@@ -354,15 +308,15 @@ Using polynomial features reduced our model metrics so now we can choose our fin
 
 Our best model is a Gradient Boosting Classifier on X_improv features! We found an accuracy of ~.84 and F1 the same. The top features from our model were population density, % of the population that is foreign born and % of the population that is white.
 
-<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/features.png">
+<img src="Images/features.png">
 
 Next we looked at a confusion matrix to see how the where the wrong predictions were.
 
-<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/confusion.png">
+<img src="Images/confusion.png">
 
 We have a very even split between False Negatives/Positives.
 
-<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/roc.png">
+<img src="Images/roc.png">
 
 We also built an ROC curve and calculated our AUC score, showing an AUC of 0.9 which means our model is quite accurate!
 
