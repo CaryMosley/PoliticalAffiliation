@@ -273,3 +273,37 @@ Our next feature will be HOUSE_RATIO, which will check if median house value ove
 <img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/house_price_inc.png">
 
 Later on we'll perform some hypothesis testing to see if there are statistically significant differences in our new features.
+
+## Feature Selection I
+
+### Hypothesis Testing on New Features
+
+We'll run Z tests on these features to check the following, with the groups meaning the features we made: Null Hypothesis: Proportion of different classes among these groups is the same. Alternative Hypothesis: Proportion of different classes among these groups is different.
+
+We won't run a hypothesis test on our HOUSE_RATIO column because it is the only non-class variable.
+
+If we can reject the null hypothesis, then we know that feature may be useful for our model. Otherwise, we won't use it. We will use a p-value of 0.05.
+
+Using our two-sample proportion test we arrive at a p value of .06 for MAJ_FEMALE so we do not reject the null. The p values we get for MAJ_WHITE, SUPER_WHITE, and POP_LARGE are essentially 0 so we strongly reject the null for each of these. We will move forward with these columns but decided not to use MAJ_FEMALE in our model.
+
+Next we're going to check for multicollinearity. We get the following sets with very high correlations:
+
+WHITE and BLACK
+
+HISPANIC and OTHER_HOME_LANG
+
+FOREIGN and OTHER_HOME_LANG
+
+COMPUTER and INTERNET
+
+LABOR and FEM_LABOR
+
+POVERTY and LOG_HOUSEHOLD_INCOME
+
+LOG_HOUSEHOLD_INCOME and LOG_INCOME
+
+LOG_POP, LOG_HOUSEHOLDS, and LOG_FIRMS
+
+We cannot remove WHITE or BLACK because they were both used to make other features. As the collinearity is only a bit higher than 0.85, we'll keep both in, but note that they are highly correlated. Next, we see OTHER_HOME_LANG and LOG_HOUSEHOLD_INCOME are both correlated to two other features, so we will remove them. We can't remove LOG_POP because it is used to make other features, so we'll remove LOG_HOUSEHOLDS and LOG_FIRMS from this line. We then looked at the correlations between the rest and our output variable to decide what to drop. We end up with the final heatmap below showing the issues we mentioned above but overall it looks reasonable.
+
+<img src="https://github.com/CaryMosley/PoliticalAffiliation/blob/master/heatmap.png">
